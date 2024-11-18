@@ -1,0 +1,28 @@
+# Ignore environment and credentials files
+sql_credentials.env
+Test.ipynb
+
+# macOS system files
+.DS_Store
+
+# Python specific files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environment folders
+env/
+venv/
+ENV/
+.venv/
+.ENV/
+
+# Logs and other common environment files
+*.log
+*.env
+*.sqlite3
