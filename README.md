@@ -17,6 +17,6 @@ First I'll start by querying the results table: I’ll fetch all foreign keys re
 
 That will be my base table, based on that, I’ll start adding more columns that will help me later, like driver’s age, experience, experience with current team, all time wins, all time wins with current team, points, and more. Then to make this simpler, I’ll filter the data from 2010 onwards, because that is the last major change in F1’s point system. In the future I may consider all the data from 1950 and try to convert it to the current point system. 
 
-I end up with a table with 21 columns (147 after I get dummies). For the complete step by step, refer to the [Data Collection Notebook](Data_Collection.ipynb). 
+I ended up with a table with 21 columns (147 after I get dummies). For the complete step by step, refer to the [Data Collection Notebook](Data_Collection.ipynb). 
 
 ## 2. ML Modeling
