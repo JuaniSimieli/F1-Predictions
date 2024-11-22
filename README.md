@@ -13,10 +13,11 @@ My primary source will be [Ergast API](http://ergast.com/mrd/), which is an expe
 
 First I'll start by querying the results table: I’ll fetch all foreign keys related to tables we'll need to get data from, plus the grid position. I'll join that with the race table to get other foreign keys plus the year, round, and date of the race. 
 
-![first_table](Images/table_01.png)
+![first_table](Data-collection/Images/table_01.png)
 
 That will be my base table, based on that, I’ll start adding more columns that will help me later, like driver’s age, experience, experience with current team, all time wins, all time wins with current team, points, and more. Then to make this simpler, I’ll filter the data from 2010 onwards, because that is the last major change in F1’s point system. In the future I may consider all the data from 1950 and try to convert it to the current point system. 
 
-I ended up with a table with 21 columns (147 after I get dummies). For the complete step by step, refer to the [Data Collection Notebook](Data_Collection.ipynb). 
+I ended up with a table with 21 columns (147 after I get dummies). For the complete step by step, refer to the [Data Collection Notebook](Data-collection/Data_Collection.ipynb). 
 
-## 2. ML Modeling
+## 2. Exploratory Data Analysis
+
