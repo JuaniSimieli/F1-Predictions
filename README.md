@@ -38,4 +38,36 @@ I want to start by creating a heat map between all this variables to see how cor
 
 ![heat_map](EDA/Images/heatmap.png)
 
+This gives us a good idea of how the different variables affect each other. Since I’ll be trying to predict position, we can see the one that has the most impact is grid. So let’s compare them in a Box Plot. Note that grid 0 is used for a pit lane start.
 
+![grid-finish-boxplot](EDA/Images/grid-finish-boxplot.png)
+
+So the chances of getting a win from pole (grid==1) are really high. In fact, here’s a chart of the overall probability of winning from pole position.
+
+![pole-win-prob](EDA/Images/pole-win-prob.png)
+
+More than 50% chance of winning a race if the starting position is the pole.
+
+Are circuits related to this? Formula 1 hosted GPs in many different circuits over the years, which they also changed the layouts of. Here’s a map of all the circuits that hosted races since 2010.
+
+![circuit-map](EDA/Images/circuit-map.png)
+
+It’s important to say that some circuits hosted only 1 race, like Mugello, where others like Silverstone hosted 16. Here’s a chart that shows the number of races held by each circuit.
+
+![races-held-bycircuit](EDA/Images/races-held-bycircuit.png)
+
+All of them are different. Some are permanent racing venues, while others are street circuits. Both are really different, but sometimes people may say that in some circuits like Monaco, pole position is the key to a win, mainly because of how narrow and difficult it is to overtake. Let’s see how different the pole-to-win ratio is varied by circuit, where the bigger squares represent the higher chance of converting a pole into a win.
+
+![pole-win-bycircuit](EDA/Images/pole-win-bycircuit.png)
+
+Does this have anything to do with accidents? Let’s see how they compare based on how prone accidents are to each circuit. 
+
+![circuit-danger-bycircuit](EDA/Images/circuit-danger-bycircuit.png)
+
+We can see some similarities in the last 2 graphics. Is it possible that how prone a circuit is to accidents leads to a higher chance of converting a pole into a win?
+
+![poletowin-circuitdanger-bycircuit](EDA/Images/poletowin-circuitdanger-bycircuit.png)
+
+We can see there is no correlation between the two variables.
+
+## 3. Machine Learning Modeling
