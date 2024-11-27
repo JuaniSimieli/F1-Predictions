@@ -21,3 +21,21 @@ I ended up with a table with 21 columns (147 after I get dummies). For the compl
 
 ## 2. Exploratory Data Analysis
 
+For this step, I’d like to start explaining all the columns that will be mentioned:
+- `grid`: Starting position
+- `position`: Finishing position (this one is the one that I want to predict)
+- `driver_age`: Driver age at the time of the race
+- `driver_constructor_experience`: Driver experience with current team until that race
+- `driver_points`: Driver’s points before the start of the race
+- `driver_standing`: Driver’s standing in the championship before the start of the race
+- `constructor_points`: Driver’s current team points before the start of the race
+- `constructor_standing`: Driver’s current team standing in the championship before the start of the race
+- `driver_wins`: Driver’s total wins in F1 at the time of the race
+- `constructor_wins`: Driver’s current team total wins in F1 at the time of the race
+- `circuit_danger`: How prone are accidents in that circuit. Comes from dividing amount of total crashes in that circuit divided by the amount of races that circuit held.
+  
+I want to start by creating a heat map between all this variables to see how correlated they are.
+
+![heat_map](EDA/Images/heatmap.png)
+
+
