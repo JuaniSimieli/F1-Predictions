@@ -71,3 +71,19 @@ We can see some similarities in the last 2 graphics. Is it possible that how pro
 We can see there is no correlation between the two variables.
 
 ## 3. Machine Learning Modeling
+
+To start, is this a Regression or Classification problem? Depending on the approach, we can adopt either. I will do both and keep the most accurate model. 
+
+For a Regression approach, we can predict `position` and keep the lowest value in a given race, and that would be the winner. On the other hand, for classification, it will be predicting the winner. 
+
+After some model training, these are the results:
+
+![regression-models-metrics](ML-modelling/Images/RegressionModelsMetric.png)
+
+I used **R² Score** to evaluate the Regression models.
+
+![regression-models-metrics](ML-modelling/Images/ClassificationModelsMetric.png)
+
+And **F1 Score** to evaluate the Classification models
+
+For simplicity, I'll use the best overall model: **Random Forest (Regressor)**
