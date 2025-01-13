@@ -1,4 +1,4 @@
-# F1-Predictions
+# F1-Predictions | *Under development*
 
 My career as a Data Scientist started with motorsport: not so long ago I bought a racing simulator and that became my favorite hobby. I always like to push everything to the limit, so I asked myself, how can I do it here? How can I improve? That’s when all this “data world” came up. Turns out, a racing simulator not only simulates the real life in looks and physics, but also on data. In this case, telemetry. I found out I could analyze this data to improve my lap times, get my ideal fuel load, estimate the best lap time to pit, and so on. I loved that so much that I thought, how can I make this my career? That’s when I found out about Data Science.
 
@@ -17,7 +17,7 @@ First I'll start by querying the results table: I’ll fetch all foreign keys re
 
 That will be my base table, based on that, I’ll start adding more columns that will help me later, like driver’s age, experience, experience with current team, all time wins, all time wins with current team, points, and more. Then to make this simpler, I’ll filter the data from 2010 onwards, because that is the last major change in F1’s point system. In the future I may consider all the data from 1950 and try to convert it to the current point system. 
 
-I ended up with a table with 21 columns (147 after I get dummies). For the complete step by step, refer to the [Data Collection Notebook](Data-collection/Data_Collection.ipynb). 
+I ended up with a table with 21 columns (147 after applying one-hot-encoding). For the complete step by step, refer to the [Data Collection Notebook](Data-collection/Data_Collection.ipynb). 
 
 ## 2. Exploratory Data Analysis
 
