@@ -12,6 +12,10 @@ Here I'll explain my data source and how I used it for gathering all the informa
 
 My primary source will be [Ergast API](http://ergast.com/mrd/), which is an experimental web service which provides a historical record of motor racing data for non-commercial purposes. It will be deprecated soon, but since its successor it’s still in alpha phase, for this first version of the project, I’ll stick to Ergast. One feature this API has is that it lets you download the full MySQL database image, so you can run it locally, and thats the approach I took. 
 
+Here's a look at entity relationship diagram for the DB
+
+<img src="Data-collection/Images/db_schema.png" width="60%">
+
 First I'll start by querying the results table: I’ll fetch all foreign keys related to tables we'll need to get data from, plus the grid position. I'll join that with the race table to get other foreign keys plus the year, round, and date of the race. 
 
 <img src="Data-collection/Images/table_01.png" width="60%">
