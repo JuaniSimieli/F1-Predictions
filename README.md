@@ -79,15 +79,8 @@ We can see there is no correlation between the two variables.
 
 To start, is this a Regression or Classification problem? Depending on the approach, we can adopt either. I will do both and keep the most accurate model. 
 
-For a Regression approach, we can predict `position` and keep the lowest value in a given race, and that would be the winner. On the other hand, for classification, it will be predicting the winner. 
+For a Regression approach, we can predict `position` and keep the lowest value in a given race, and that would be the winner. On the other hand, for classification, it will be predicting the winner, and if it predicts more than 1, I'll chose the one with the highes probability.
 
 After some model training, these are the results:
 
-<div style="display: flex; justify-content: space-between;">
-  <img src="ML-modelling/Images/RegressionModelsMetric.png" width="45%">
-  <img src="ML-modelling/Images/ClassificationModelsMetric.png" width="45%">
-</div>
-
-I used **R² Score** to evaluate the Regression models, and **F1 Score** to evaluate the Classification models.
-
-For simplicity, I'll use the best overall model: **Random Forest (Regressor)**
+<img src="ML-modelling/Images/model_accuracy.png" width="70%">
