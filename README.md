@@ -14,15 +14,15 @@ My primary source will be [Ergast API](http://ergast.com/mrd/), which is an expe
 
 Here's a look at entity relationship diagram for the DB
 
-<img src="Data-collection/Images/db_schema.png" width="60%">
+<img src="Data-collection/Images/db_schema.png" width="80%">
 
 First I'll start by querying the results table: I’ll fetch all foreign keys related to tables we'll need to get data from, plus the grid position. I'll join that with the race table to get other foreign keys plus the year, round, and date of the race. 
 
-<img src="Data-collection/Images/table_01.png" width="60%">
+<img src="Data-collection/Images/table_01.png" width="70%">
 
 That will be my base table, based on that, I’ll start adding more columns that will help me later, like driver’s age, experience, experience with current team, all time wins, all time wins with current team, points, and more. Then to make this simpler, I’ll filter the data from 2010 onwards, because that is the last major change in F1’s point system. In the future I may consider all the data from 1950 and try to convert it to the current point system. I then dropped the 2024 season to separate it for the predictions later.
 
-I ended up with a table with 21 columns (147 after applying one-hot-encoding). For the complete step by step, refer to the [Data Collection Notebook](Data-collection/Data_Collection.ipynb). 
+I ended up with a table with 17 columns (123 after applying one-hot-encoding). For the complete step by step, refer to the [Data Collection Notebook](Data-collection/Data_Collection.ipynb). 
 
 ## 2. Exploratory Data Analysis
 
@@ -41,37 +41,37 @@ For this step, I’d like to start explaining all the columns that will be menti
   
 I want to start by creating a heat map between all this variables to see how correlated they are.
 
-<img src="EDA/Images/heatmap.png" width="50%">
+<img src="EDA/Images/heatmap.png" width="60%">
 
 This gives us a good idea of how the different variables affect each other. Since I’ll be trying to predict position, we can see the one that has the most impact is grid. So let’s compare them in a Box Plot. Note that grid 0 is used for a pit lane start.
 
-<img src="EDA/Images/grid-finish-boxplot.png" width="50%"> 
+<img src="EDA/Images/grid-finish-boxplot.png" width="60%"> 
 
 So the chances of getting a win from pole (grid==1) are really high. In fact, here’s a chart of the overall probability of winning from pole position.
 
-<img src="EDA/Images/pole-win-prob.png" width="50%">
+<img src="EDA/Images/pole-win-prob.png" width="60%">
 
 More than 50% chance of winning a race if the starting position is the pole.
 
 Are circuits related to this? Formula 1 hosted GPs in many different circuits over the years, which they also changed the layouts of. Here’s a map of all the circuits that hosted races since 2010.
 
-<img src="EDA/Images/circuit-map.png" width="50%">
+<img src="EDA/Images/circuit-map.png" width="60%">
 
 It’s important to say that some circuits hosted only 1 race, like Mugello, where others like Silverstone hosted 16. Here’s a chart that shows the number of races held by each circuit.
 
-<img src="EDA/Images/races-held-bycircuit.png" width="50%">
+<img src="EDA/Images/races-held-bycircuit.png" width="60%">
 
 All of them are different. Some are permanent racing venues, while others are street circuits. Both are really different, but sometimes people may say that in some circuits like Monaco, pole position is the key to a win, mainly because of how narrow and difficult it is to overtake. Let’s see how different the pole-to-win ratio is varied by circuit, where the bigger squares represent the higher chance of converting a pole into a win.
 
-<img src="EDA/Images/pole-win-bycircuit.png" width="50%">
+<img src="EDA/Images/pole-win-bycircuit.png" width="60%">
 
 Does this have anything to do with accidents? Let’s see how they compare based on how prone accidents are to each circuit. 
 
-<img src="EDA/Images/circuit-danger-bycircuit.png" width="50%">
+<img src="EDA/Images/circuit-danger-bycircuit.png" width="60%">
 
 We can see some similarities in the last 2 graphics. Is it possible that how prone a circuit is to accidents leads to a higher chance of converting a pole into a win?
 
-<img src="EDA/Images/poletowin-circuitdanger-bycircuit.png" width="50%">
+<img src="EDA/Images/poletowin-circuitdanger-bycircuit.png" width="60%">
 
 We can see there is no correlation between the two variables.
 
@@ -79,8 +79,10 @@ We can see there is no correlation between the two variables.
 
 To start, is this a Regression or Classification problem? Depending on the approach, we can adopt either. I will do both and keep the most accurate model. 
 
-For a Regression approach, we can predict `position` and keep the lowest value in a given race, and that would be the winner. On the other hand, for classification, it will be predicting the winner, and if it predicts more than 1, I'll chose the one with the highes probability.
+For a Regression approach, we can predict `position` and keep the lowest value in a given race, and that would be the winner. On the other hand, for classification, it will be predicting the winner, and if it predicts more than 1, I'll chose the one with the highest probability.
 
 After some model training, these are the results:
 
 <img src="ML-modelling/Images/model_accuracy.png" width="70%">
+
+As we can see, all models with the exception of Naïve Bayes (Shown as GaussianNB), perform with an accuracy of around 60%, with `Random Forest Regressor` being the highest with 66%, using both the 2023 and 2024 seasons as test sets.
