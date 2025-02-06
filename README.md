@@ -1,6 +1,8 @@
 #### *Under development*
 # F1-Predictions
 
+### Motivation
+
 My career as a Data Scientist started with motorsport: not so long ago I bought a racing simulator and that became my favorite hobby. I always like to push everything to the limit, so I asked myself, how can I do it here? How can I improve? That’s when all this “data world” came up. Turns out, a racing simulator not only simulates the real life in looks and physics, but also on data. In this case, telemetry. I found out I could analyze this data to improve my lap times, get my ideal fuel load, estimate the best lap time to pit, and so on. I loved that so much that I thought, how can I make this my career? That’s when I found out about Data Science.
 
 So as my first Data Science project, I figured I could go back to where it all started and make it about motorsport, and of course it had to be Formula 1, right? I thought it would be fun to predict the winner of a Grand Prix, and see what variables are the most important ones for a weekend of success. I will predict the whole 2024 season and compare it to the actual results
@@ -55,23 +57,23 @@ More than 50% chance of winning a race if the starting position is the pole.
 
 Are circuits related to this? Formula 1 hosted GPs in many different circuits over the years, which they also changed the layouts of. Here’s a map of all the circuits that hosted races since 2010.
 
-<img src="EDA/Images/circuit-map.png" width="60%">
+<img src="EDA/Images/circuit-map.png" width="80%">
 
 It’s important to say that some circuits hosted only 1 race, like Mugello, where others like Silverstone hosted 16. Here’s a chart that shows the number of races held by each circuit.
 
-<img src="EDA/Images/races-held-bycircuit.png" width="60%">
+<img src="EDA/Images/races-held-bycircuit.png" width="80%">
 
 All of them are different. Some are permanent racing venues, while others are street circuits. Both are really different, but sometimes people may say that in some circuits like Monaco, pole position is the key to a win, mainly because of how narrow and difficult it is to overtake. Let’s see how different the pole-to-win ratio is varied by circuit, where the bigger squares represent the higher chance of converting a pole into a win.
 
-<img src="EDA/Images/pole-win-bycircuit.png" width="60%">
+<img src="EDA/Images/pole-win-bycircuit.png" width="80%">
 
 Does this have anything to do with accidents? Let’s see how they compare based on how prone accidents are to each circuit. 
 
-<img src="EDA/Images/circuit-danger-bycircuit.png" width="60%">
+<img src="EDA/Images/circuit-danger-bycircuit.png" width="80%">
 
 We can see some similarities in the last 2 graphics. Is it possible that how prone a circuit is to accidents leads to a higher chance of converting a pole into a win?
 
-<img src="EDA/Images/poletowin-circuitdanger-bycircuit.png" width="60%">
+<img src="EDA/Images/poletowin-circuitdanger-bycircuit.png" width="80%">
 
 We can see there is no correlation between the two variables.
 
