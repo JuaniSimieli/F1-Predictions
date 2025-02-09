@@ -87,4 +87,9 @@ After some model training, these are the results:
 
 <img src="ML-modelling/Images/model_accuracy.png" width="70%">
 
-As we can see, all models with the exception of Naïve Bayes (Shown as GaussianNB), perform with an accuracy of around 60%, with `Random Forest Regressor` being the highest with 66%, using both the 2023 and 2024 seasons as test sets.
+As we can see, regression models tend to perform better, with `Random Forest Regressor` having the highest accuracy around 69%, using both the 2023 and 2024 seasons as test sets.
+
+The hyperparameters used to achieve that metric with `RFR` were the following:
+- `n_estimators`: 100
+- `criterion`: 'absolute_error' 
+- `max_features`: 'sqrt'
