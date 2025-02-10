@@ -4,22 +4,23 @@ from utils import predict_round
 
 st.title("F1 Predictions")
 
-df = pd.read_csv('Streamlit/assets/df_2024.csv')
-rounds2024 = df['round'].unique()
+df = pd.read_csv('Streamlit/assets/rounds_2024.csv')
 
-round = st.selectbox("Select a race from the 2024 season to make predictions!", rounds2024)
+round = st.selectbox("Select a race from the 2024 season to make predictions!", 
+                    options=df['round'],
+                    format_func=lambda x: f"Round {x}: {df['name'].iloc[x - 1]}")
 
-st.text(f"Results for round {round}")
+st.text(f"Results for {df['name'].iloc[round - 1]}")
 
 prediction_df = predict_round(round)
 
-st.dataframe(prediction_df)
+st.dataframe(prediction_df, hide_index=True)
 
 predicted_driver = prediction_df['predicted'].iloc[0]
 actual_winner = prediction_df['actual'].iloc[0]
 
 if predicted_driver == actual_winner:
-    st.text(f"Model predicted {predicted_driver} as winner correctly!")
+    st.text(f"🟢 Model predicted {predicted_driver} as winner correctly!")
 else:
     podium_drivers = prediction_df['actual'].tolist()
     
@@ -28,6 +29,8 @@ else:
         
         pos_text = "2nd" if actual_position == 2 else "3rd"
             
-        st.text(f"Model predicted {predicted_driver} as winner, but he finished {pos_text} instead.")
+        st.text(f"🟡 Model predicted {predicted_driver} as winner, but he finished {pos_text} instead.")
     else: 
-        st.text(f"Model predicted {predicted_driver} as winner, but he didn't even finish in the podium.")
+        st.text(f"🔴 Model predicted {predicted_driver} as winner, but he didn't even finish in the podium.")
+
+st.page_link(page=df['url'].iloc[round - 1], label="Full race details", icon=":material/link:")
