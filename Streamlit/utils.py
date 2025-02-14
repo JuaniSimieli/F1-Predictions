@@ -2,15 +2,15 @@ import joblib
 import pandas as pd
 
 def load_model_and_scaler():
-    model = joblib.load("Streamlit/assets/model.pkl")
-    scaler = joblib.load("Streamlit/assets/scaler.pkl")
+    model = joblib.load("assets/model.pkl")
+    scaler = joblib.load("assets/scaler.pkl")
     return model, scaler
 
 def predict_round(round_number):
 
     trained_model, scaler = load_model_and_scaler()
 
-    df = pd.read_csv('Streamlit/assets/df_2024.csv')
+    df = pd.read_csv('assets/df_2024.csv')
 
     numerical_columns = [
         'grid', 'driver_age', 'driver_experience', 'driver_constructor_experience',

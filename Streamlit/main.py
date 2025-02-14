@@ -2,9 +2,13 @@ import streamlit as st
 import pandas as pd
 from utils import predict_round
 
-st.title("F1 Predictions")
+with st.sidebar:
+    st.page_link('main.py', label='Predictor', icon='🏎️')
+    st.page_link('pages/project_workflow.py', label='Project Workflow', icon='🚀')
 
-df = pd.read_csv('Streamlit/assets/rounds_2024.csv')
+st.title(f'🏎️ F1 Predictions')
+
+df = pd.read_csv('assets/rounds_2024.csv')
 
 round = st.selectbox("Select a race from the 2024 season to make predictions!", 
                     options=df['round'],
