@@ -1,0 +1,13 @@
+model_name,accuracy,type
+Linear Regression,0.17391304347826086,Regressor
+Random Forest,0.6956521739130435,Regressor
+SVM,0.5869565217391305,Regressor
+Decision Tree,0.5217391304347826,Regressor
+KNN,0.6521739130434783,Regressor
+Lasso,0.6739130434782609,Regressor
+Logistic Regression,0.6086956521739131,Classifier
+Decision Tree,0.5652173913043478,Classifier
+SVM,0.6086956521739131,Classifier
+Random Forest,0.5434782608695652,Classifier
+KNN,0.6086956521739131,Classifier
+Naïve Bayes,0.043478260869565216,Classifier

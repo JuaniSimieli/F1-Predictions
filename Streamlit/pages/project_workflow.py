@@ -175,6 +175,31 @@ def race_count_chart():
     
     st.plotly_chart(fig)
 
+def ml_models_score():
+    mldf = pd.read_csv('assets/ML/ML-models-scores.csv')
+    
+    mldf['position'] = range(len(mldf))
+    
+    fig = px.bar(
+        mldf,
+        x='position',
+        y='accuracy',
+        color='type',
+        labels={'accuracy': 'Accuracy', 'position': ''},
+        color_discrete_map={
+            'Regressor': '#636EFA',
+            'Classifier': '#EF553B'
+        }
+    )
+    
+    fig.update_xaxes(
+        tickvals=mldf['position'],
+        ticktext=mldf['model_name'],
+        title_text="" 
+    )
+    
+    st.plotly_chart(fig)
+
 with st.sidebar:
     st.page_link('main.py', label='Predictor', icon='🏎️')
     st.page_link('pages/project_workflow.py', label='Project Workflow', icon='🚀')
@@ -340,3 +365,22 @@ with tab2:
 
 with tab3:
     st.title("🤖 ML Modeling")
+
+    st.markdown("""
+    To start, is this a Regression or Classification problem? Depending on the approach, we can adopt either. I will do both and keep the most accurate model. 
+
+    For a Regression approach, we can predict `position` and keep the lowest value in a given race, and that would be the winner. On the other hand, for classification, it will be predicting the winner, and if it predicts more than 1, I'll chose the one with the highest probability.
+
+    After some model training and hyperparameter tuning, these are the results:
+    """)
+
+    ml_models_score()
+
+    st.markdown("""
+    As we can see, regression models tend to perform better, with `Random Forest Regressor` having the highest accuracy around 69% on the test sets.
+
+    The hyperparameters used to achieve that metric with `RFR` were the following:
+    - `n_estimators`: 100
+    - `criterion`: 'absolute_error' 
+    - `max_features`: 'sqrt'
+    """)
