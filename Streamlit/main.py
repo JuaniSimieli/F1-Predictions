@@ -24,7 +24,7 @@ predicted_driver = prediction_df['predicted'].iloc[0]
 actual_winner = prediction_df['actual'].iloc[0]
 
 if predicted_driver == actual_winner:
-    st.text(f"🟢 Model predicted {predicted_driver} as winner correctly!")
+    st.success(f"Model predicted {predicted_driver} as winner correctly!", icon="✅")
 else:
     podium_drivers = prediction_df['actual'].tolist()
     
@@ -33,8 +33,8 @@ else:
         
         pos_text = "2nd" if actual_position == 2 else "3rd"
             
-        st.text(f"🟡 Model predicted {predicted_driver} as winner, but he finished {pos_text} instead.")
+        st.warning(f"Model predicted {predicted_driver} as winner, but he finished {pos_text} instead.", icon="⚠️")
     else: 
-        st.text(f"🔴 Model predicted {predicted_driver} as winner, but he didn't even finish in the podium.")
+        st.error(f"Model predicted {predicted_driver} as winner, but he didn't even finish in the podium.", icon="🚨")
 
 st.page_link(page=df['url'].iloc[round - 1], label="Full race details", icon=":material/link:")
