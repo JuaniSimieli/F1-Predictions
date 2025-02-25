@@ -8,7 +8,7 @@ with st.sidebar:
 
 st.title(f'🏎️ F1 Predictions')
 
-df = pd.read_csv('assets/rounds_2024.csv')
+df = pd.read_csv('data/processed/rounds_2024.csv')
 
 round = st.selectbox("Select a race from the 2024 season to make predictions!", 
                     options=df['round'],

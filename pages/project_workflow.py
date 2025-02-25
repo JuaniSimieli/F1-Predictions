@@ -4,8 +4,8 @@ import plotly.express as px
 import seaborn as sns
 import random
 
-df_eda = pd.read_csv('assets/EDA/df_eda.csv')
-races_held_2010 = pd.read_csv('assets/EDA/df_races_2010.csv')
+df_eda = pd.read_csv('data/processed/df_eda.csv')
+races_held_2010 = pd.read_csv('data/processed/df_races_2010.csv')
 
 def grid_vs_finish():
     fig = px.box(df_eda, x='grid', y='position', 
@@ -176,7 +176,7 @@ def race_count_chart():
     st.plotly_chart(fig)
 
 def ml_models_score():
-    mldf = pd.read_csv('assets/ML/ML-models-scores.csv')
+    mldf = pd.read_csv('assets/model_performance/ml_models_scores.csv')
     
     mldf['position'] = range(len(mldf))
     
@@ -216,19 +216,19 @@ with tab1:
     st.subheader("Step 1")
     st.text("Here I'll query for all rows in results table, I'll fetch all foreign keys related to tables we'll need to get data from, plus the grid position. I'll join that with the race table to get other foreign keys plus the year, round, and date of the race.")
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_01.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_01.csv')
         st.dataframe(data=df, height=200)
 
     st.subheader('Step 2')
     st.text("Here I'll calculate the driver age at the time of the race, for that I'll get the driver's DOB and compare that to each entry's date to get the drivers age at that time.")
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_02.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_02.csv')
         st.dataframe(data=df, height=200)
 
     st.subheader('Step 3')
     st.markdown("Here I'll calculate the driver's experience (Number of GPs entered). For that I'll start by sorting the current `results_df` by `date` and `resultId`. Then I'll create a cumulative count of appearance for each driver.")
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_03.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_03.csv')
         st.dataframe(data=df, height=200)
     
         st.subheader('Step 3')
@@ -236,25 +236,25 @@ with tab1:
     st.subheader('Step 4')
     st.markdown("Similar to last step, I'll calculate the driver's experience with it's current team. For that I'll create a cumulative count of appearances for each `driverId` and `constructorId` combination")
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_04.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_04.csv')
         st.dataframe(data=df, height=200)
 
     st.subheader('Step 5')
     st.markdown("Now I want to calculate both the driver's all time wins and the driver's all time wins with that specific constructor. Using a temporary `win_indicator`, and similary to last steps, using a cumulative count, then dropping the temporary column as it's no longer needed.")
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_05.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_05.csv')
         st.dataframe(data=df, height=200)
 
     st.subheader('Step 6')
     st.markdown("For this step I need to make a new query: I need `driver_points` and `driver_standings` after each race, that I'll then merge to `results_df`")
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_06.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_06.csv')
         st.dataframe(data=df, height=200)
 
     st.subheader('Step 7')
     st.markdown("Same as last step, but this time for constructor standings data.")
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_07.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_07.csv')
         st.dataframe(data=df, height=200)
 
     st.divider()
@@ -274,31 +274,31 @@ with tab1:
     st.subheader('Step 8')
     st.markdown("Shift data to have points/wins prior the race entry, instead of after.")
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_08.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_08.csv')
         st.dataframe(data=df, height=200)
 
     st.subheader('Step 9')
     st.markdown("Rename shifted columns and drop unnecesary ones")
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_09.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_09.csv')
         st.dataframe(data=df, height=200)
 
     st.subheader('Step 10')
     st.markdown("Filter `merged_df` to keep only rows where `year` is 2010 or later. Why I'm doing this? Because 2010 is the last time F1 made a big change in the points award system. So for simplicity, instead of converting all the previous races for the current point system, I'll work with all the entries from 2010 or later.")
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_10.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_10.csv')
         st.dataframe(data=df, height=200)
 
     st.subheader('Step 11')
     st.markdown("Calculate Circuit Danger Metric. What is this? One of the tables is *status* which displays the status for each *results* entry. And since each of those entries corresponds to one *race*, we can calculate how many incidents there were on each circuit, and the total of races on that circuit. So `circuit_danger` will result of dividing the total of incidents on a circuit by the total races on that circuit, from 2010 or later.")
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_11.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_11.csv')
         st.dataframe(data=df, height=200)
 
     st.subheader('Step 12')
     st.markdown("Here I'll merge `circuit_danger` to the `merged_df`. The rest of the values will be used for EDA.")
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_12.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_12.csv')
         st.dataframe(data=df, height=200)
 
     st.subheader('Step 13')
@@ -310,7 +310,7 @@ with tab1:
     st.subheader('Step 15')
     st.markdown("Change IDs from `driverId`, `circuitId` and `constructorId` to their descriptive names and apply one-hot-encoding")
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_15.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_15.csv')
         st.dataframe(data=df, height=200)
 
     st.subheader('Step 16')
@@ -321,7 +321,7 @@ with tab1:
             - `circuit` < 3: To drop circuits that hosted less than 3 races
         """)
     with st.expander("See output"):
-        df = pd.read_csv('assets/Data-collection/step_16.csv')
+        df = pd.read_csv('assets/data_collection_steps/step_16.csv')
         st.dataframe(data=df, height=200)
 
 with tab2:
