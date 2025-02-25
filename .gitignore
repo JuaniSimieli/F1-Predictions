@@ -28,3 +28,7 @@ ENV/
 *.log
 *.env
 *.sqlite3
+
+# Include model & scaler
+!data/models/model.pkl
+!data/models/scaler.pkl
