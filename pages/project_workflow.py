@@ -201,7 +201,7 @@ def ml_models_score():
     st.plotly_chart(fig)
 
 with st.sidebar:
-    st.page_link('main.py', label='Predictor', icon='🏎️')
+    st.page_link('streamlit_app.py', label='Predictor', icon='🏎️')
     st.page_link('pages/project_workflow.py', label='Project Workflow', icon='🚀')
 
 tab1, tab2, tab3 = st.tabs(["Data Collection", "EDA", "ML Modeling"])

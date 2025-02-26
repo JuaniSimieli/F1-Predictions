@@ -3,7 +3,7 @@ import pandas as pd
 from utils import predict_round
 
 with st.sidebar:
-    st.page_link('main.py', label='Predictor', icon='🏎️')
+    st.page_link('streamlit_app.py', label='Predictor', icon='🏎️')
     st.page_link('pages/project_workflow.py', label='Project Workflow', icon='🚀')
 
 st.title(f'🏎️ F1 Predictions')
