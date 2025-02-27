@@ -25,7 +25,7 @@ streamlit run ./streamlit_app.py
 ```
 
 ### About the model and data
-The data used for this was queried from [Ergast](https://ergast.com/mrd/). You can download the latest [here](https://ergast.com/mrd/db/). Note that the project was made with data up until the end of the 2024 season. To run the [Data Collection Notebook](https://github.com/JuaniSimieli/F1-Predictions/blob/main/notebooks/01_data_collection.ipynb), you'll need to download the database image from Ergast and set up a file called `sql_credentials.env` and fill it with the information below (updating your to yout credentials).
+The data used for this was queried from [Ergast](https://ergast.com/mrd/). You can download the latest [here](https://ergast.com/mrd/db/). Note that the project was made with data up until the end of the 2024 season. To run the [Data Collection Notebook](https://github.com/JuaniSimieli/F1-Predictions/blob/main/notebooks/01_data_collection.ipynb), you'll need to download the database image from Ergast and set up a file called `sql_credentials.env` and fill it with the information below (updating it to your credentials).
 
 ```
 # sql_credentials.env 
